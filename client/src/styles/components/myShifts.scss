@@ -12,11 +12,10 @@
             @extend .thin-heading;
             margin-left: 10px;
         }
-
-        &:first-child {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
+    }
+    > *:first-child {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
     .shift-details {
         display: flex;
@@ -35,6 +34,22 @@
                 margin-top: 5px;
                 font-size: 18px;
                 color: $Blue100;
+            }
+        }
+        .booking-status {
+            margin-left: auto;
+            margin-right: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            &.booked {
+                color: $Blue500;
+            }
+            &.overlapping {
+                color: $Pink;
+            }
+            @media screen and (max-width: 320px) {
+                margin-left: auto;
+                margin-right: auto;
             }
         }
         .btn {
