@@ -23,7 +23,7 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
   return (
     <div className="shifts-container">
       {Object.keys(shiftGroups).map((shift) => {
-        return <>
+        return <div className="shifts-group-container" key={shift}>
           <h3 className="shift-group">{shift}</h3>
           {
             
@@ -37,7 +37,7 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
               </div>
             })
           }
-        </>
+        </div>
       })}
       {
         Object.keys(shiftGroups).length === 0 && <p className="no-shifts">No shifts found!</p>

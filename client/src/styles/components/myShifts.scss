@@ -13,9 +13,11 @@
             margin-left: 10px;
         }
     }
-    > *:first-child {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+    .shifts-group-container {
+        > *:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
     }
     .shift-details {
         display: flex;

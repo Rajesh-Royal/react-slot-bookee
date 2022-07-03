@@ -53,7 +53,7 @@ export const checkIfDateIsTodayOrTomorrow = (date: string): string => {
     const today = convertMillisecondsToMonthNameAndDay(todayDate.valueOf());
     todayDate.setDate(todayDate.getDate() + 1);
     const tomorrow = convertMillisecondsToMonthNameAndDay(todayDate.valueOf());
-    console.log('today', today)
+    // console.log('today', today)
 
     if (today === date) return "Today";
     else if (tomorrow === date) return "Tomorrow";
@@ -67,7 +67,7 @@ export const checkIfDateIsTodayOrTomorrow = (date: string): string => {
  * @example "9h"
  * 
  * @todo 
- * - remove the hours which are overlapping
+ * - ~~remove the hours which are overlapping~~
  * - ~~return minutes if the hours are less than 1~~
  */
 export const getTotalDurationOfShifts = (shiftsArray: ISingleShift[]) => {
