@@ -32,7 +32,7 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
                 <div className="shift-timing">
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                 </div>
-                <div className={`booking-status ${shift.booked ? "booked" : "overlapping"}`}>{shift.booked ? "Booked" : "Overlapping"}</div>
+                <div className={`booking-status ${shift.booked ? "booked" : ""}`}>{shift.booked ? "Booked" : ""}</div>
                 <button className={`${shift.booked ? "btn-pink" : "btn-green"}`}>{!shift.booked ? "Book" : "Cancel"}</button>
               </div>
             })

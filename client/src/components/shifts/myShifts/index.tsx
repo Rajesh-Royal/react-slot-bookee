@@ -11,7 +11,7 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
   useEffect(() => {
     // this gives an object with dates as keys
-    const groupShiftsByDate = shiftsData.filter((sft) => !sft.booked).reduce((dateGroups, shift) => {
+    const groupShiftsByDate = shiftsData.filter((sft) => sft.booked).reduce((dateGroups, shift) => {
       const date = checkIfDateIsTodayOrTomorrow(convertMillisecondsToMonthNameAndDay(shift.startTime));
       if (!dateGroups[date]) {
         dateGroups[date] = [];
