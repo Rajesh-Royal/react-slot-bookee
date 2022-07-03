@@ -7,12 +7,12 @@ interface IMyShiftsProps {
   shiftsData: ISingleShift[];
  }
 const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
-  const [shiftGroups, setShiftGroups] = useState({})
+  const [shiftGroups, setShiftGroups] = useState<{ [key: string]: ISingleShift[] } >({})
   console.log('shiftGroups', shiftGroups)
   useEffect(() => {
     // this gives an object with dates as keys
     const groupShiftsByDate = shiftsData.filter((sft) => !sft.booked).reduce((dateGroups, shift) => {
-      const date = convertMillisecondsToMonthNameAndDay(shift.startTime);
+      const date = checkIfDateIsTodayOrTomorrow(convertMillisecondsToMonthNameAndDay(shift.startTime));
       if (!dateGroups[date as typeof dateGroups[keyof typeof dateGroups]]) {
         // @ts-ignore
         dateGroups[date] = [];
@@ -28,15 +28,14 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
     <div className="shifts-container">
       {Object.keys(shiftGroups).map((shift) => {
         return <>
-          <h3 className="shift-group">{checkIfDateIsTodayOrTomorrow(shift)} <span className="shift-data">{
-            // @ts-ignore
+          <h3 className="shift-group">{shift} <span className="shift-data">{
             shiftGroups[shift].length
           } shifts, {
-              // @ts-ignore
               getTotalDurationOfShifts(shiftGroups[shift])
-            }</span></h3>
+            }</span>
+          </h3>
           {
-            // @ts-ignore
+            
             shiftGroups[shift].map((shift: ISingleShift) => { 
               return <div className="shift-details">
                 <div className="shift-timing">
