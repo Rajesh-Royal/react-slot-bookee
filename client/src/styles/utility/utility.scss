@@ -1,0 +1,93 @@
+// @todo - remove hard-coded and use css map to generate utility classes
+
+@import "../configs/variables.scss";
+
+// green
+.text-green {
+    color: $Green;
+}
+.text-green-500 {
+    color: $Green500;
+}
+.text-green-100 {
+    color: $Green100;
+}
+
+// pink
+.text-pink {
+    color: $Pink;
+}
+.text-pink-500 {
+    color: $Pink500;
+}
+.text-pink-100 {
+    color: $Pink100;
+}
+
+// blue
+.text-blue {
+    color: $Blue;
+}
+.text-blue-500 {
+    color: $Blue500;
+}
+.text-blue-100 {
+    color: $Blue100;
+}
+.text-blue-50 {
+    color: $Blue50;
+}
+
+// white
+.text-white {
+    color: $White;
+}
+.text-whiteSmoke {
+    color: $WhiteSmoke;
+}
+
+// backgrounds
+
+// bg-green
+.bg-green {
+    background-color: $Green;
+}
+.bg-green-500 {
+    background-color: $Green500;
+}
+.bg-green-100 {
+    background-color: $Green100;
+}
+
+// bg-pink
+.bg-pink {
+    background-color: $Pink;
+}
+.bg-pink-500 {
+    background-color: $Pink500;
+}
+.bg-pink-100 {
+    background-color: $Pink100;
+}
+
+// bg-blue
+.bg-blue {
+    background-color: $Blue;
+}
+.bg-blue-500 {
+    background-color: $Blue500;
+}
+.bg-blue-100 {
+    background-color: $Blue100;
+}
+.bg-blue-50 {
+    background-color: $Blue50;
+}
+
+// bg-white
+.bg-white {
+    background-color: $White;
+}
+.bg-whiteSmoke {
+    background-color: $WhiteSmoke;
+}
