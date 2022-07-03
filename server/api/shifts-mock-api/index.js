@@ -7,13 +7,22 @@ import { delay } from './utils';
 
 const db = createMockDb({ shifts: mockShifts });
 
+const formatResponse = (data, operationType) => {
+  // console.log('data', data)
+  return {
+    statusCode: 200,
+    message: `${operationType || ""} successful`,
+    data: data,
+  };
+}
+
 export const routes = [
   {
     method: 'GET',
     path: '/',
     handler: async () => {
       await delay(500);
-      return db.shifts.list();
+      return formatResponse(await db.shifts.list().then((data) => data), "Fetch all shifts");
     },
   },
   {
@@ -27,7 +36,7 @@ export const routes = [
         throw Boom.notFound(`Shift not found with id ${params.id}`);
       }
 
-      return shift;
+      return formatResponse(shift, "Get shift");;
     },
     config: {
       validate: {
@@ -65,7 +74,7 @@ export const routes = [
       await db.shifts.set(params.id, { booked: true });
       await delay(500);
 
-      return db.shifts.get(params.id);
+      return formatResponse(await db.shifts.get(params.id), "Booked shift");
     },
     config: {
       validate: {
@@ -90,7 +99,7 @@ export const routes = [
       await db.shifts.set(params.id, { booked: false });
       await delay(500);
 
-      return db.shifts.get(params.id);
+      return formatResponse(await db.shifts.get(params.id), "Canceled shift");
     },
     config: {
       validate: {
