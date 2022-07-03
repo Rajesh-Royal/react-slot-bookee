@@ -1,8 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { getListOfAllShifts } from './api/controllers/get-all-shifts';
 import './App.css';
+import logo from './logo.svg';
 
 function App() {
+  useEffect(() => {
+    getListOfAllShifts().then((data) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [])
+  
   return (
     <div className="App">
       <header className="App-header">
