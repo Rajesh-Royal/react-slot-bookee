@@ -3,7 +3,7 @@
     - ~~Add sass support~~.
     - Create theme variables.
     - Create theme classes.
-    - 
+    - Use maps to create css utility classes.
 - **App feat**
     - List my shifts.
     - List Available shifts.
