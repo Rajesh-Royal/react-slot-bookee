@@ -13,8 +13,9 @@ const createMockDb = (initialValues = {}) => {
   })
 
   return {
-    shifts: createDbMethods(state.shifts),
+    shifts: createDbMethods(state.shifts.sort((shift, nextShift) => shift.startTime - nextShift.startTime)),
   };
 };
 
 export { createMockDb };
+
