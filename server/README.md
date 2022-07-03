@@ -44,3 +44,9 @@ npm start
 ```
 
 API server runs at `localhost:8080`
+
+
+
+##### Project setup
+**server**
+- Make sure you installed `babel-cli` globally use `npm install -g babel-cli`.
