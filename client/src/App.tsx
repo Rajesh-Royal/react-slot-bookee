@@ -17,6 +17,10 @@ function App() {
   return (
     <div className="app-container">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <div className="app-content">
+        {/* {activeTab === navBarItems.MY_SHIFTS && <MyShifts />}
+        {activeTab === navBarItems.AVAILABLE_SHIFTS && <AvailableShifts />} */}
+      </div>
     </div>
   );
 }

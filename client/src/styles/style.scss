@@ -1,3 +1,18 @@
+@import "./configs/variables.scss";
+@import "./utility/utility.scss";
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+    @extend .bg-whiteSmoke;
+}
+
+// root container
+.app-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+}
+
+.app-content {
+    @extend .bg-white;
 }
