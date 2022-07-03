@@ -3,9 +3,10 @@ import HTTPService from "../httpService";
 export const getListOfAllShifts = (): Promise<TGetListOfAllShiftsAPIResponse> => {
     return HTTPService.get("");
 }
+
 export interface ISingleShift {
     id: string,
-    booked: false,
+    booked: boolean,
     area: string,
     startTime: number,
     endTime: number
