@@ -3,8 +3,10 @@
 
 .nav-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    font-size: 22px;
+    font-size: 28px;
+    padding: 0px 30px;
     p {
         &.active {
             @extend .text-blue;

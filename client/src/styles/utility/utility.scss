@@ -105,10 +105,26 @@
 .heading-bold {
     font-weight: bold;
     color: $Blue500;
-    font-size: 18px;
+    font-size: 22px;
 }
 .thin-heading {
     font-weight: 100;
     color: $Blue100;
     font-size: 16px;
+}
+
+// global button style
+.btn {
+    border: 1px solid $Blue100;
+    border-radius: 80px;
+    padding: 10px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+}
+.btn-pink {
+    @extend .btn;
+    border-color: $Pink500;
+    color: $Pink;
 }

@@ -1,9 +1,45 @@
 @import "../configs/variables.scss";
 @import "../utility/utility.scss";
 
-.my-shifts {
-    .shift-data {
-        @extend .thin-heading;
-        margin-left: 10px;
+.shifts-container {
+    .shift-group {
+        @extend .heading-bold;
+        padding: 20px;
+        border-bottom: 2px solid $Blue50;
+        background-color: $WhiteSmoke;
+        .shift-data {
+            @extend .thin-heading;
+            margin-left: 10px;
+        }
+
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    }
+    .shift-details {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 2px solid $Blue50;
+        .shift-timing {
+            .time {
+                font-size: 20px;
+                color: $Blue500;
+            }
+            .city {
+                margin-top: 5px;
+                font-size: 18px;
+                color: $Blue100;
+            }
+        }
+        .btn {
+            @media screen and (max-width: 320px) {
+                flex-grow: 1;
+            }
+        }
     }
 }

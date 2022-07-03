@@ -42,9 +42,24 @@ main {
 
 h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: 0;
 }
 
+// reset the default margin on headings
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+}
+
+// reset p default margin and paddings
+p {
+    margin: 0;
+    padding: 0;
+}
 /* Grouping content
    ========================================================================== */
 
