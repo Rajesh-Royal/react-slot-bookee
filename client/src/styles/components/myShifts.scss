@@ -2,6 +2,7 @@
 @import "../utility/utility.scss";
 
 .shifts-container {
+    position: relative;
     .shift-group {
         @extend .heading-bold;
         padding: 20px;
@@ -41,5 +42,9 @@
                 flex-grow: 1;
             }
         }
+    }
+    .no-shifts {
+        margin-top: 100px;
+        @extend .text-center, .text-blue-100;
     }
 }

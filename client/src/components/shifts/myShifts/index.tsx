@@ -5,22 +5,20 @@ import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, conve
 
 interface IMyShiftsProps {
   shiftsData: ISingleShift[];
- }
+}
+ interface IShiftGroupsType { [key: string]: ISingleShift[] }
 const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
-  const [shiftGroups, setShiftGroups] = useState<{ [key: string]: ISingleShift[] } >({})
-  console.log('shiftGroups', shiftGroups)
+  const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
   useEffect(() => {
     // this gives an object with dates as keys
-    const groupShiftsByDate = shiftsData.filter((sft) => !sft.booked).reduce((dateGroups, shift) => {
+    const groupShiftsByDate = shiftsData.filter((sft) => sft.booked).reduce((dateGroups, shift) => {
       const date = checkIfDateIsTodayOrTomorrow(convertMillisecondsToMonthNameAndDay(shift.startTime));
-      if (!dateGroups[date as typeof dateGroups[keyof typeof dateGroups]]) {
-        // @ts-ignore
+      if (!dateGroups[date]) {
         dateGroups[date] = [];
       }
-      // @ts-ignore
       dateGroups[date].push(shift);
       return dateGroups;
-    }, {});  
+    }, {} as IShiftGroupsType);  
     setShiftGroups(groupShiftsByDate)
   }, [shiftsData])
   
@@ -47,7 +45,10 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
             })
           }
         </>
-       })}
+      })}
+      {
+        Object.keys(shiftGroups).length === 0 && <p className="no-shifts">No shifts found!</p>
+      }
     </div>
   )
 }
