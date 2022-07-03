@@ -8,11 +8,16 @@ body {
 
 // root container
 .app-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: auto;
     padding: 10px;
 }
 
 .app-content {
     @extend .bg-white;
+    border: 1px solid $Blue100;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 2px $Blue50;
+    min-height: 200px;
 }

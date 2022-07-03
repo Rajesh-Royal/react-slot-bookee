@@ -1,0 +1,9 @@
+@import "../configs/variables.scss";
+@import "../utility/utility.scss";
+
+.my-shifts {
+    .shift-data {
+        @extend .thin-heading;
+        margin-left: 10px;
+    }
+}
