@@ -5,17 +5,19 @@
     - ~~Create theme classes.~~
     - Use maps to create css utility classes.
 - **App feat**
-    - List my shifts.
-    - List Available shifts.
+    - ~~List my shifts.~~
+    - ~~List Available shifts.~~
     - ~~Activate current nav.~~
     - Filter shifts by selected city.
     - Show total shifts with city name.
+    - book and cancel a shift.
+    - disable overlapping shifts, show overlapping text.
     - Booking action shows a spinner.
     - create context for api data.
     - add toaster error messages and success messages.
 - **API**
-    - Create cancel, book shifts api controllers.
-    - Create above api types.
+    - ~~Create cancel, book shifts api controllers.~~
+    - ~~Create above api types.~~
 - **App setup**
     - Add eslint scripts.
     - Setup code formatting with prettier and eslint.
