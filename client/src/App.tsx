@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getListOfAllShifts, ISingleShift } from './api/controllers/get-all-shifts';
 import Header from './components/header';
 import AvailableShifts from './components/shifts/availableShifts';
 import MyShifts from './components/shifts/myShifts';
@@ -7,21 +8,22 @@ import "./styles/utility/flexbox.scss";
 import "./styles/utility/utility.scss";
 
 function App() {
-  // useEffect(() => {
-  //   getListOfAllShifts().then((data) => {
-  //     console.log(data);
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   });
-  // }, [])
+  const [shiftsData, setShiftsData] = useState<ISingleShift[]>([]);
+  useEffect(() => {
+    getListOfAllShifts().then((allShifts) => {
+      setShiftsData(allShifts.data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [])
   const [activeTab, setActiveTab] = useState(navBarItems.MY_SHIFTS);
   
   return (
     <div className="app-container">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="app-content">
-        {activeTab === navBarItems.MY_SHIFTS && <MyShifts />}
-        {activeTab === navBarItems.AVAILABLE_SHIFTS && <AvailableShifts />}
+        {activeTab === navBarItems.MY_SHIFTS && <MyShifts shiftsData={shiftsData} />}
+        {activeTab === navBarItems.AVAILABLE_SHIFTS && <AvailableShifts shiftsData={shiftsData} />}
       </div>
     </div>
   );

@@ -11,6 +11,8 @@
     - Filter shifts by selected city.
     - Show total shifts with city name.
     - Booking action shows a spinner.
+    - create context for api data.
+    - add toaster error messages and success messages.
 - **API**
     - Create cancel, book shifts api controllers.
     - Create above api types.

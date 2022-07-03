@@ -5,7 +5,7 @@ import { appConfig } from "../config";
 const axiosInstance = axios.create({
     baseURL: appConfig.apiUrl,
 });
-console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
+// console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL)
 
 // show boom error in toaster globally
 const errorInterceptor = (errorResponse: any) => {

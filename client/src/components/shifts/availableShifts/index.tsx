@@ -1,5 +1,9 @@
+import { ISingleShift } from "../../../api/controllers/get-all-shifts";
 
-const AvailableShifts = () => {
+interface IAvailableShiftsProps {
+  shiftsData: ISingleShift[];
+ }
+const AvailableShifts = ({shiftsData}: IAvailableShiftsProps) => {
   return (
     <div>available shifts</div>
   )
