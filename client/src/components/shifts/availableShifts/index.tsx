@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { bookAShiftById } from "../../../api/controllers/book-shift";
+import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
 import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay } from "../../../util/utilityFunctions";
 
@@ -28,6 +29,13 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
       console.log(error);
     })
   }
+  const cancelAShift = (id: string) => {
+    cancelAShiftById(id).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
   return (
     <div className="shifts-container">
       {Object.keys(shiftGroups).map((shift) => {
@@ -42,7 +50,9 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
                 </div>
                 <div className={`booking-status ${shift.booked ? "booked" : ""}`}>{shift.booked ? "Booked" : ""}</div>
                 <button className={`${shift.booked ? "btn-pink" : "btn-green"}`}
-                onClick={() => bookAShift(shift.id)}
+                  onClick={() => {
+                    !shift.booked ? bookAShift(shift.id) : cancelAShift(shift.id);
+                  }}
                 >{!shift.booked ? "Book" : "Cancel"}</button>
               </div>
             })
