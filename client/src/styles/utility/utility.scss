@@ -128,3 +128,8 @@
     border-color: $Pink500;
     color: $Pink;
 }
+.btn-green {
+    @extend .btn;
+    border-color: $Green500;
+    color: $Green;
+}
