@@ -1,6 +1,6 @@
 import HTTPService from "../httpService";
 
-export const getListOfAllShifts = (): Promise<string> => {
+export const getListOfAllShifts = (): Promise<TGetListOfAllShiftsAPIResponse> => {
     return HTTPService.get("");
 }
 export interface ISingleShift {
