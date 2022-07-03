@@ -6,7 +6,8 @@
   "scripts": {
     "start:client": "cd client && npm run start",
     "start:server": "cd server && npm run start",
-    "setup:project": "cd client && npm i && cd.. && cd server && npm i && cd.. && npm i -g babel-cli",
+    "setup:project": "npm i && cd client && npm i && cd.. && cd server && npm i && cd.. && npm i -g babel-cli",
+    "create:release": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/Rajesh-Royal/react-slot-bookee/issues"
   },
-  "homepage": "https://github.com/Rajesh-Royal/react-slot-bookee#readme"
+  "homepage": "https://github.com/Rajesh-Royal/react-slot-bookee#readme",
+  "dependencies": {
+    "standard": "^17.0.0",
+    "version": "^0.1.2"
+  }
 }
