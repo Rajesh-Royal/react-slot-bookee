@@ -3,7 +3,15 @@ import HTTPService from "../httpService";
 export const getListOfAllShifts = (): Promise<string> => {
     return HTTPService.get("");
 }
-
-export type TGetListOfAllShifts = {
-
+export interface ISingleShift {
+    id: string,
+    booked: false,
+    area: string,
+    startTime: number,
+    endTime: number
+}
+export type TGetListOfAllShiftsAPIResponse = {
+    statusCode: 200,
+    message: string,
+    data: ISingleShift[]
 }
