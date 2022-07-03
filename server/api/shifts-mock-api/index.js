@@ -1,13 +1,13 @@
-import Joi from 'joi';
 import Boom from 'boom';
+import Joi from 'joi';
 
-import { delay } from './utils';
 import { createMockDb } from './db';
 import mockShifts from './mockShifts';
+import { delay } from './utils';
 
 const db = createMockDb({ shifts: mockShifts });
 
-const routes = [
+export const routes = [
   {
     method: 'GET',
     path: '/',
@@ -111,3 +111,4 @@ const plugin = {
 };
 
 export { plugin };
+
