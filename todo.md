@@ -1,13 +1,13 @@
 ### Project Todod:
 - **UI**
-    - ~~Add sass support~~.
-    - Create theme variables.
-    - Create theme classes.
+    - ~~Add sass support.~~
+    - ~~Create theme variables.~~
+    - ~~Create theme classes.~~
     - Use maps to create css utility classes.
 - **App feat**
     - List my shifts.
     - List Available shifts.
-    - Activate current nav.
+    - ~~Activate current nav.~~
     - Filter shifts by selected city.
     - Show total shifts with city name.
     - Booking action shows a spinner.
