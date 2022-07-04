@@ -8,8 +8,8 @@
     - ~~List my shifts.~~
     - ~~List Available shifts.~~
     - ~~Activate current nav.~~
-    - Filter shifts by selected city.
-    - Show total shifts with city name.
+    - ~~Filter shifts by selected city.~~
+    - ~~Show total shifts with city name.~~
     - ~~book and cancel a shift.~~
     - ~~disable overlapping shifts, show overlapping text.~~
     - ~~disable already started shift and show finished text.~~
@@ -30,6 +30,8 @@
 - **other**
     - refector codebase to remove unnecessary states, reduce rerenders etc.
     - add typescript aliasas to make imports cleaner.
+- **Bugfix**
+    - fix: render the correct output after bookin a shift [currently it always shows overlapping]
 
 
 Queries: 
