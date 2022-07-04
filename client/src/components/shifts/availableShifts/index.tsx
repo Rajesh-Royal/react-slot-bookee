@@ -47,6 +47,8 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
     // set default shifts city
     if (currentArea === "") {
       setCurrentArea(Object.keys(groupShiftsByCity)[0]);
+    } else {
+      filterShiftsByCity(currentArea);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shiftsData])
@@ -129,11 +131,9 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                 </div>
                 <div className={`booking-status
-                  ${shift.booked ? "booked" : ""}
-                  ${!shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}`}
+                  ${shift.booked ? "booked" : !shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}`}
                 >
-                  {shift.booked ? "Booked" : ""}
-                  {!shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}
+                  {shift.booked ? "Booked" : !shift.booked && checkIfAnShiftIsOverLapping(shift) ? "Overlapping" : ""}
                 </div>
                 <button className={`${shift.booked ? "btn-pink" : "btn-green"}`}
                   disabled={checkIfAnShiftIsOverLapping(shift) || Date.now() > shift.startTime}
