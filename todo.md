@@ -30,7 +30,7 @@
     - post-merge: npm i if something changes in `package.lock.json` 
 - **other**
     - refector codebase to remove unnecessary states, reduce rerenders etc.
-    - add typescript aliasas to make imports cleaner.
+    - ~~add typescript aliasas to make imports cleaner.~~
 - **Bugfix**
     - fix: render the correct output after bookin a shift [currently it always shows overlapping]
 
