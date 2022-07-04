@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 const errorInterceptor = (errorResponse: any) => {
     if (errorResponse) {
         const { message, status } = errorResponse.data;
-        console.log('message, status', message, status)
+        // console.log('message, status', message, status)
     }
 };
 
