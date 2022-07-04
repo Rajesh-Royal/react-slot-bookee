@@ -12,6 +12,7 @@
     - Show total shifts with city name.
     - ~~book and cancel a shift.~~
     - disable overlapping shifts, show overlapping text.
+    - ~~disable already started shift and show finished text.~~
     - ~~Booking action shows a spinner.~~
     - create context for api data.
     - ~~add toaster error messages and success messages.~~
