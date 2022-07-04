@@ -12,9 +12,10 @@ const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loade
 
 interface IAvailableShiftsProps {
   shiftsData: ISingleShift[];
+  refreshAPIResults: () => void;
 }
  interface IShiftGroupsType { [key: string]: ISingleShift[] }
-const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
+const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProps) => {
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
   const [loading, setLoading] = useState("");
   useEffect(() => {
@@ -33,6 +34,7 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
   const bookAShift = (id: string) => {
     setLoading(id);
     bookAShiftById(id).then((response) => {
+       refreshAPIResults();
       setLoading("");
       toast.success(response.message);
       // console.log(response);
@@ -45,6 +47,7 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
   const cancelAShift = (id: string) => {
     setLoading(id);
     cancelAShiftById(id).then((response) => {
+      refreshAPIResults();
       setLoading("");
       toast.success(response.message);
       // console.log(response);

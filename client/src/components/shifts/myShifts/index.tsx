@@ -9,11 +9,12 @@ import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, conve
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader"/>
 interface IMyShiftsProps {
   shiftsData: ISingleShift[];
+  refreshAPIResults: () => void;
 }
  interface IShiftGroupsType { [key: string]: ISingleShift[] }
-const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
+const MyShifts = ({ shiftsData, refreshAPIResults }: IMyShiftsProps) => {
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState("");
   useEffect(() => {
     // this gives an object with dates as keys
     const groupShiftsByDate = shiftsData.filter((sft) => sft.booked).reduce((dateGroups, shift) => {
@@ -28,12 +29,13 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
   }, [shiftsData])
 
   const cancelAShift = (id: string) => {
-    setLoading(true);
+    setLoading(id);
     cancelAShiftById(id).then((response) => {
-    setLoading(false);
+      setLoading("");
+      refreshAPIResults();
       toast.success(response.message);
     }).catch((error) => {
-    setLoading(false);
+    setLoading("");
       toast.error(error.data.message);
     })
   }
@@ -56,7 +58,7 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                   <p className="city">{shift.area}</p>
                 </div>
-                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>{loading ?  redSpinnerImage : "Cancel"}</button>
+                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>{loading === shift.id ?  redSpinnerImage : "Cancel"}</button>
               </div>
             })
           }
