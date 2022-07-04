@@ -91,7 +91,7 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
                   {!shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}
                 </div>
                 <button className={`${shift.booked ? "btn-pink" : "btn-green"}`}
-                  disabled={checkIfAnShiftIsOverLapping(shift)}
+                  disabled={checkIfAnShiftIsOverLapping(shift) || Date.now() > shift.startTime}
                   onClick={() => {
                     !shift.booked ? bookAShift(shift.id) : cancelAShift(shift.id);
                   }}
