@@ -58,7 +58,12 @@ const MyShifts = ({ shiftsData, refreshAPIResults }: IMyShiftsProps) => {
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                   <p className="city">{shift.area}</p>
                 </div>
-                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>{loading === shift.id ?  redSpinnerImage : "Cancel"}</button>
+                {/* a finished shift will have a green button and disabled with Finished text */}
+                <button className={`${Date.now() >= shift.endTime ? "btn-green" : "btn-pink"}`}
+                  disabled={Date.now() > shift.startTime}
+                  onClick={() => cancelAShift(shift.id)}>
+                  {loading === shift.id ? redSpinnerImage : Date.now() >= shift.endTime ? "Finished" : "Cancel"}
+                </button>
               </div>
             })
           }
