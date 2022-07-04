@@ -26,8 +26,9 @@
     - Setup husky hooks.
     - ~~Setup `.vscode` settings to format code on user actions.~~
 - **Husky hooks**
-    - pre-commit: to format code before making a commit.
-    - post-merge: npm i if something changes in `package.lock.json` 
+    - ~~pre-commit: to format code before making a commit.~~
+    - ~~post-merge: npm i if something changes in `package.lock.json`~~ 
+    - execute pre-commit hook, currently its not working for client folder. [move to root for .git]
 - **other**
     - refector codebase to remove unnecessary states, reduce rerenders etc.
     - ~~add typescript aliasas to make imports cleaner.~~
