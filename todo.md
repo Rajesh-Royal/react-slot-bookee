@@ -21,10 +21,10 @@
     - ~~Create cancel, book shifts api controllers.~~
     - ~~Create above api types.~~
 - **App setup**
-    - Add eslint scripts.
-    - Setup code formatting with prettier and eslint.
+    - ~~Add eslint scripts.~~
+    - ~~Setup code formatting with prettier and eslint.~~
     - Setup husky hooks.
-    - Setup `.vscode` settings to format code on user actions.
+    - ~~Setup `.vscode` settings to format code on user actions.~~
 - **Husky hooks**
     - pre-commit: to format code before making a commit.
     - post-merge: npm i if something changes in `package.lock.json` 
