@@ -1,25 +1,26 @@
 import { ISingleShift } from "@/api/controllers/get-all-shifts";
 import { useReducer } from "react";
-import { SET_LOADING, SET_SHIFTS } from "./type";
+import { REMOVE_LOADING, SET_LOADING, SET_SHIFTS } from "./type";
 
 export const initialShiftsState: IShifts = {
   shifts: [],
-  loading: false
+  isApiLoading: false
 };
 
-const ourReducer = (state = initialShiftsState, action: { type: string; payload: ISingleShift[] | [] }) => {
+const ourReducer = (state = initialShiftsState, action: { type: string; payload?: ISingleShift[] | [] }) => {
   switch (action.type) {
     case SET_SHIFTS:
-      return { ...state, shifts: [...action.payload] };
+      return { ...state, shifts: [...(action.payload as [])] };
     case SET_LOADING:
-      // @todo - create actions instead of doing type assertions
-      return { ...state, loading: action.payload as unknown as boolean };
+      return { ...state, isApiLoading: true };
+    case REMOVE_LOADING:
+      return { ...state, isApiLoading: false };
     default:
       return state;
   }
 };
 
-export const useShiftsData = (): [IShifts, React.Dispatch<{ type: string; payload: ISingleShift[] | [] }>] => {
+export const useShiftsData = (): [IShifts, React.Dispatch<{ type: string; payload?: ISingleShift[] | [] }>] => {
   const [state, dispatch] = useReducer(ourReducer, initialShiftsState);
 
   return [state, dispatch];
@@ -27,5 +28,5 @@ export const useShiftsData = (): [IShifts, React.Dispatch<{ type: string; payloa
 
 export interface IShifts {
   shifts: ISingleShift[] | [];
-  loading: boolean;
+  isApiLoading: boolean;
 }

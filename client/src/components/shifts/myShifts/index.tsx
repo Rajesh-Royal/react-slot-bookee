@@ -1,17 +1,19 @@
 import { ISingleShift } from "@/api/controllers/get-all-shifts";
 import { convertMillisecondsToHourAndMinute, getTotalDurationOfShifts } from "@/util/utilityFunctions";
 
+import GreenSpinner from "../../../assets/spinner_green.svg";
 import RedSpinner from "../../../assets/spinner_red.svg";
 import "../../../styles/components/myShifts.scss";
 import useMyShifts from "./useMyShifts";
 
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader" />;
+const greenSpinnerImage = <img src={GreenSpinner} alt="green spinner" className="loader" />;
 interface IMyShiftsProps {
   refreshAPIResults: () => void;
 }
 
 const MyShifts = ({ refreshAPIResults }: IMyShiftsProps) => {
-  const { cancelAShift, loading, shiftGroups } = useMyShifts(refreshAPIResults);
+  const { cancelAShift, loading, shiftGroups, isApiLoading } = useMyShifts(refreshAPIResults);
 
   return (
     <div className="shifts-container">
@@ -44,7 +46,8 @@ const MyShifts = ({ refreshAPIResults }: IMyShiftsProps) => {
           </div>
         );
       })}
-      {Object.keys(shiftGroups).length === 0 && <p className="no-shifts">No shifts found!</p>}
+      {!isApiLoading && Object.keys(shiftGroups).length === 0 && <p className="no-shifts">No shifts found!</p>}
+      {isApiLoading && <p className="no-shifts">{greenSpinnerImage}</p>}
     </div>
   );
 };

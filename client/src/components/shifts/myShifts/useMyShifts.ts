@@ -9,7 +9,7 @@ interface IShiftGroupsType {
 }
 
 const useMyShifts = (refreshAPIResults: () => void) => {
-  const { shifts: shiftsData } = useContext(ShiftsContext);
+  const { shifts: shiftsData, isApiLoading } = useContext(ShiftsContext);
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({});
   const [loading, setLoading] = useState("");
   useEffect(() => {
@@ -41,7 +41,7 @@ const useMyShifts = (refreshAPIResults: () => void) => {
       });
   };
 
-  return { loading, shiftGroups, cancelAShift };
+  return { loading, shiftGroups, cancelAShift, isApiLoading };
 };
 
 export default useMyShifts;

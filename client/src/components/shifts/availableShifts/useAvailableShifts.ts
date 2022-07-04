@@ -10,7 +10,7 @@ interface IShiftGroupsType {
 }
 
 const useAvailableShifts = (refreshAPIResults: () => void) => {
-  const { shifts: shiftsData } = useContext(ShiftsContext);
+  const { shifts: shiftsData, isApiLoading } = useContext(ShiftsContext);
   const [shiftGroupsByDate, setShiftGroupsByDate] = useState<IShiftGroupsType>({});
   const [shiftGroupsByCity, setShiftGroupsByCity] = useState<IShiftGroupsType>({});
   const [currentShifts, setCurrentShifts] = useState<IShiftGroupsType>({});
@@ -108,7 +108,7 @@ const useAvailableShifts = (refreshAPIResults: () => void) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentArea]);
-  return { bookAShift, cancelAShift, filterShiftsByCity, checkIfAnShiftIsOverLapping, loading, currentShifts, currentArea, shiftGroupsByCity, shiftGroupsByDate, setCurrentArea };
+  return { bookAShift, cancelAShift, filterShiftsByCity, checkIfAnShiftIsOverLapping, loading, currentShifts, currentArea, shiftGroupsByCity, shiftGroupsByDate, setCurrentArea, isApiLoading };
 };
 
 export default useAvailableShifts;

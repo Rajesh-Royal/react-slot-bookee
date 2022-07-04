@@ -13,7 +13,8 @@ interface IAvailableShiftsProps {
 }
 
 const AvailableShifts = ({ refreshAPIResults }: IAvailableShiftsProps) => {
-  const { bookAShift, cancelAShift, checkIfAnShiftIsOverLapping, loading, currentShifts, currentArea, shiftGroupsByCity, shiftGroupsByDate, setCurrentArea } = useAvailableShifts(refreshAPIResults);
+  const { bookAShift, cancelAShift, checkIfAnShiftIsOverLapping, loading, currentShifts, currentArea, shiftGroupsByCity, shiftGroupsByDate, setCurrentArea, isApiLoading } =
+    useAvailableShifts(refreshAPIResults);
 
   return (
     <div className="shifts-container">
@@ -62,7 +63,8 @@ const AvailableShifts = ({ refreshAPIResults }: IAvailableShiftsProps) => {
           </div>
         );
       })}
-      {Object.keys(shiftGroupsByDate).length === 0 && <p className="no-shifts">No shifts found!</p>}
+      {!isApiLoading && Object.keys(shiftGroupsByDate).length === 0 && <p className="no-shifts">No shifts found!</p>}
+      {isApiLoading && <p className="no-shifts">{greenSpinnerImage}</p>}
     </div>
   );
 };

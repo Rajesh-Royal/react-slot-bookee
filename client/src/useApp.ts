@@ -2,16 +2,19 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { getListOfAllShifts } from "./api/controllers/get-all-shifts";
 import { IShifts, useShiftsData } from "./store/shifts/reducer";
-import { SET_SHIFTS } from "./store/shifts/type";
+import { REMOVE_LOADING, SET_LOADING, SET_SHIFTS } from "./store/shifts/type";
 
 export const useApp = (): [IShifts, () => void] => {
   const [shifts, dispatch] = useShiftsData();
   const refreshShifts = () => {
+    dispatch({ type: SET_LOADING });
     getListOfAllShifts()
       .then((allShifts) => {
         dispatch({ type: SET_SHIFTS, payload: allShifts.data });
+        dispatch({ type: REMOVE_LOADING });
       })
       .catch((err) => {
+        dispatch({ type: REMOVE_LOADING });
         toast.error(err?.data?.message);
       });
   };
