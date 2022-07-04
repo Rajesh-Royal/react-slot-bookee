@@ -47,7 +47,7 @@ export const routes = [
     },
   },
   {
-    method: 'POST',
+    method: 'GET',
     path: '/{id}/book',
     handler: async ({ params }) => {
       const shift = await db.shifts.get(params.id);
@@ -85,7 +85,7 @@ export const routes = [
     },
   },
   {
-    method: 'POST',
+    method: 'GET',
     path: '/{id}/cancel',
     handler: async ({ params }) => {
       const shift = await db.shifts.get(params.id);

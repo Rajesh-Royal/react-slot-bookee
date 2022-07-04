@@ -6,7 +6,7 @@ const shiftTime = (dateObj, shiftDays = 0) =>
 
 const createMockShift = (values) => Object.assign({
   id: uuid(),
-  booked: true,
+  booked: false,
 }, values);
 
 export default [
