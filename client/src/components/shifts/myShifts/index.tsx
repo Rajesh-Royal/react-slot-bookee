@@ -43,10 +43,11 @@ const MyShifts = ({ shiftsData, refreshAPIResults }: IMyShiftsProps) => {
   return (
     <div className="shifts-container">
       {Object.keys(shiftGroups).map((shift) => {
+        let shiftCount = shiftGroups[shift].length;
         return <div className="shifts-group-container" key={shift}>
           <h3 className="shift-group">{shift} <span className="shift-data">{
-            shiftGroups[shift].length
-          } shifts, {
+            shiftCount
+          } {shiftCount > 1 ? "shifts" : "shift"}, {
               getTotalDurationOfShifts(shiftGroups[shift])
             }</span>
           </h3>
