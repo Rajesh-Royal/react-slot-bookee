@@ -14,9 +14,9 @@
             "@utility/*": [
                 "src/util/*"
             ], // import utilify functions with @utility
-            "@styles/*": [
-                "src/styles/*"
-            ]
+            // "@styles/*": [
+            //     "src/styles/*"
+            // ]
         }
     }
 }

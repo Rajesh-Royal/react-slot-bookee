@@ -7,7 +7,7 @@ module.exports = {
             '@api': path.resolve(__dirname, 'src/api/'),
             '@appComponents': path.resolve(__dirname, 'src/components/'),
             '@utility': path.resolve(__dirname, 'src/utility/'),
-            "@styles/*": path.resolve(__dirname, "src/styles/")
+            // "@styles": path.resolve(__dirname, "src/styles/")
 
         },
     },

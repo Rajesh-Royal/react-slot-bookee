@@ -1,5 +1,5 @@
-import "@styles/components/header.scss";
 import { navBarItems } from "../../constants";
+import "../../styles/components/header.scss";
 
 interface IHeaderProps {activeTab: navBarItems, setActiveTab: React.Dispatch<React.SetStateAction<navBarItems>>}
 
