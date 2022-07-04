@@ -1,7 +1,6 @@
 import HTTPService from "../httpService";
-// @tdo convert to post request when hapi server is ready to handle it.
 export const cancelAShiftById = (id: string): Promise<TCancelShiftAPIResponse> => {
-    return HTTPService.get(`/${id}/cancel`);
+    return HTTPService.post(`/${id}/cancel`, {});
 }
 
 export interface ISingleShift {

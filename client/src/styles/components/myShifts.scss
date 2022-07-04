@@ -3,6 +3,34 @@
 
 .shifts-container {
     position: relative;
+
+    .city-filter {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        button {
+            background-color: transparent;
+            padding: 10px;
+            margin: 0;
+            border: 0;
+            cursor: pointer;
+            font-size: 22px;
+            color: $Blue100;
+
+            &.active {
+                color: $Blue;
+            }
+            &:not(.active) {
+                @extend .text-blue-50;
+                &:hover {
+                    @extend .text-blue-100;
+                }
+            }
+        }
+    }
+
     .shift-group {
         @extend .heading-bold;
         padding: 20px;

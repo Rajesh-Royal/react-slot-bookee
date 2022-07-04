@@ -1,7 +1,6 @@
 import HTTPService from "../httpService";
-// @tdo convert to post request when hapi server is ready to handle it.
 export const bookAShiftById = (id: string): Promise<TBookShiftAPIResponse> => {
-    return HTTPService.get(`/${id}/book`);
+    return HTTPService.post(`/${id}/book`, {});
 }
 
 export interface ISingleShift {

@@ -70,9 +70,22 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
 
   const checkIfAnShiftIsOverLapping = (shift: ISingleShift) => {
     return !!bookedShifts.find(s => s.startTime < shift.endTime && s.endTime > shift.startTime);
-   }
+  }
+  const filterShiftsByCity = (cityName: keyof typeof shiftGroups) => {
+    const shifts = shiftGroups;
+    Object.keys(shifts).forEach((shift) => {
+      shifts[shift] = shifts[shift].filter(s => s.area === cityName);
+    })
+
+    setShiftGroups(shifts);
+  }
   return (
     <div className="shifts-container">
+      <div className="city-filter">
+        <button className="active" onClick={() => filterShiftsByCity("Helsinki")}>Helsinki (5)</button>
+        <button>Tempare (5)</button>
+        <button>Turku (5)</button>
+      </div>
       {Object.keys(shiftGroups).map((shift) => {
         return <div className="shifts-group-container" key={shift}>
           <h3 className="shift-group">{shift}</h3>
