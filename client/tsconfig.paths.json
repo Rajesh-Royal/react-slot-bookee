@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ], //  import from folders inside "src" folder using "@"
+            "@api/*": [
+                "src/api/*"
+            ], // 👈 import from the api folder => api controllers and httpservice
+            "@appComponents/*": [
+                "src/components/*"
+            ], // 👈 Import components"
+            "@utility/*": [
+                "src/util/*"
+            ]
+        }
+    }
+}

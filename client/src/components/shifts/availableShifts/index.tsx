@@ -1,6 +1,7 @@
+import { bookAShiftById } from "@/api/controllers/book-shift";
 import { useEffect, useState } from "react";
 import toast from 'react-hot-toast';
-import { bookAShiftById } from "../../../api/controllers/book-shift";
+
 import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
 import GreenSpinner from "../../../assets/spinner_green.svg";
