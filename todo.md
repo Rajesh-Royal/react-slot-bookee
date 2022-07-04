@@ -11,7 +11,7 @@
     - Filter shifts by selected city.
     - Show total shifts with city name.
     - ~~book and cancel a shift.~~
-    - disable overlapping shifts, show overlapping text.
+    - ~~disable overlapping shifts, show overlapping text.~~
     - ~~disable already started shift and show finished text.~~
     - ~~Booking action shows a spinner.~~
     - create context for api data.
@@ -27,5 +27,7 @@
 - **Husky hooks**
     - pre-commit: to format code before making a commit.
     - post-merge: npm i if something changes in `package.lock.json` 
+- **other**
+    - refector codebase to remove unnecessary states, reduce rerenders etc.
 
 
