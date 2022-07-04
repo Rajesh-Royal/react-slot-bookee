@@ -1,12 +1,13 @@
-import { bookAShiftById } from "@/api/controllers/book-shift";
+import { bookAShiftById, ISingleShift } from "@/api/controllers/book-shift";
+import { cancelAShiftById } from "@/api/controllers/cancel-shift";
+import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay } from "@/util/utilityFunctions";
 import { useEffect, useState } from "react";
 import toast from 'react-hot-toast';
 
-import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
-import { ISingleShift } from "../../../api/controllers/get-all-shifts";
+
 import GreenSpinner from "../../../assets/spinner_green.svg";
 import RedSpinner from "../../../assets/spinner_red.svg";
-import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay } from "../../../util/utilityFunctions";
+
 
 const greenSpinnerImage = <img src={GreenSpinner} alt="green spinner" className="loader"/>
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader"/>

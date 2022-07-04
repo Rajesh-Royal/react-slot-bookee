@@ -13,6 +13,9 @@
             ], // 👈 Import components"
             "@utility/*": [
                 "src/util/*"
+            ], // import utilify functions with @utility
+            "@styles/*": [
+                "src/styles/*"
             ]
         }
     }

@@ -1,10 +1,12 @@
+import { cancelAShiftById } from "@/api/controllers/cancel-shift";
+import { ISingleShift } from "@/api/controllers/get-all-shifts";
+import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "@/util/utilityFunctions";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
-import { ISingleShift } from "../../../api/controllers/get-all-shifts";
+
 import RedSpinner from "../../../assets/spinner_red.svg";
 import "../../../styles/components/myShifts.scss";
-import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "../../../util/utilityFunctions";
+
 
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader"/>
 interface IMyShiftsProps {
