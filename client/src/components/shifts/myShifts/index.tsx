@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
+import RedSpinner from "../../../assets/spinner_red.svg";
 import "../../../styles/components/myShifts.scss";
 import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "../../../util/utilityFunctions";
 
+const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader"/>
 interface IMyShiftsProps {
   shiftsData: ISingleShift[];
 }
  interface IShiftGroupsType { [key: string]: ISingleShift[] }
 const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // this gives an object with dates as keys
     const groupShiftsByDate = shiftsData.filter((sft) => sft.booked).reduce((dateGroups, shift) => {
@@ -25,9 +28,12 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
   }, [shiftsData])
 
   const cancelAShift = (id: string) => {
+    setLoading(true);
     cancelAShiftById(id).then((response) => {
+    setLoading(false);
       toast.success(response.message);
     }).catch((error) => {
+    setLoading(false);
       toast.error(error.data.message);
     })
   }
@@ -50,7 +56,7 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                   <p className="city">{shift.area}</p>
                 </div>
-                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>Cancel</button>
+                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>{loading ?  redSpinnerImage : "Cancel"}</button>
               </div>
             })
           }
