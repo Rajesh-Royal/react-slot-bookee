@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from 'react-hot-toast';
 import { bookAShiftById } from "../../../api/controllers/book-shift";
 import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
@@ -22,18 +23,23 @@ const AvailableShifts = ({ shiftsData }: IAvailableShiftsProps) => {
     }, {} as IShiftGroupsType);  
     setShiftGroups(groupShiftsByDate)
   }, [shiftsData])
+  
   const bookAShift = (id: string) => {
     bookAShiftById(id).then((response) => {
-      console.log(response);
+      toast.success(response.message);
+      // console.log(response);
     }).catch((error) => {
-      console.log(error);
+      toast.error(error.data.message);
+      // console.log(error);
     })
   }
   const cancelAShift = (id: string) => {
     cancelAShiftById(id).then((response) => {
-      console.log(response);
+      toast.success(response.message);
+      // console.log(response);
     }).catch((error) => {
-      console.log(error);
+      toast.error(error.data.message);
+      // console.log(error);
     })
   }
   return (

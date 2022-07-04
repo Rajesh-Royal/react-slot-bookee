@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { getListOfAllShifts, ISingleShift } from './api/controllers/get-all-shifts';
 import Header from './components/header';
 import AvailableShifts from './components/shifts/availableShifts';
@@ -25,6 +26,7 @@ function App() {
         {activeTab === navBarItems.MY_SHIFTS && <MyShifts shiftsData={shiftsData} />}
         {activeTab === navBarItems.AVAILABLE_SHIFTS && <AvailableShifts shiftsData={shiftsData} />}
       </div>
+      <Toaster position={'bottom-center'} />
     </div>
   );
 }

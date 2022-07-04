@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
 import "../../../styles/components/myShifts.scss";
@@ -25,9 +26,9 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
 
   const cancelAShift = (id: string) => {
     cancelAShiftById(id).then((response) => {
-      console.log(response);
+      toast.success(response.message);
     }).catch((error) => {
-      console.log(error);
+      toast.error(error.data.message);
     })
   }
   
