@@ -31,3 +31,7 @@
     - refector codebase to remove unnecessary states, reduce rerenders etc.
 
 
+Queries: 
+- Do we have to remove the shifts from available shifts which are already started or having start time in past.
+
+
