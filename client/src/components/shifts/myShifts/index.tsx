@@ -1,7 +1,8 @@
 import { cancelAShiftById } from "@/api/controllers/cancel-shift";
 import { ISingleShift } from "@/api/controllers/get-all-shifts";
+import ShiftsContext from "@/store/context/ShiftsContext";
 import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "@/util/utilityFunctions";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import RedSpinner from "../../../assets/spinner_red.svg";
@@ -9,13 +10,13 @@ import "../../../styles/components/myShifts.scss";
 
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader" />;
 interface IMyShiftsProps {
-  shiftsData: ISingleShift[];
   refreshAPIResults: () => void;
 }
 interface IShiftGroupsType {
   [key: string]: ISingleShift[];
 }
-const MyShifts = ({ shiftsData, refreshAPIResults }: IMyShiftsProps) => {
+const MyShifts = ({ refreshAPIResults }: IMyShiftsProps) => {
+  const { shifts: shiftsData } = useContext(ShiftsContext);
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({});
   const [loading, setLoading] = useState("");
   useEffect(() => {
