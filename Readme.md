@@ -5,3 +5,6 @@
 > use nodev 16 to run the client.
 
 => first Run the client with node v16 then use nvm to switch to node v12 to run the server. Now both will run without any errors.
+
+
+- To make imports shorter add your path to `.tsconfig` file in client root.

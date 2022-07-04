@@ -3,6 +3,7 @@
     - ~~Add sass support.~~
     - ~~Create theme variables.~~
     - ~~Create theme classes.~~
+    - Add loader when api's are loading.
     - Use maps to create css utility classes.
 - **App feat**
     - ~~List my shifts.~~
