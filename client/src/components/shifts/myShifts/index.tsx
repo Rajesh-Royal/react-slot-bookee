@@ -1,52 +1,17 @@
-import { cancelAShiftById } from "@/api/controllers/cancel-shift";
 import { ISingleShift } from "@/api/controllers/get-all-shifts";
-import ShiftsContext from "@/store/context/ShiftsContext";
-import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "@/util/utilityFunctions";
-import { useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { convertMillisecondsToHourAndMinute, getTotalDurationOfShifts } from "@/util/utilityFunctions";
 
 import RedSpinner from "../../../assets/spinner_red.svg";
 import "../../../styles/components/myShifts.scss";
+import useMyShifts from "./useMyShifts";
 
 const redSpinnerImage = <img src={RedSpinner} alt="red spinner" className="loader" />;
 interface IMyShiftsProps {
   refreshAPIResults: () => void;
 }
-interface IShiftGroupsType {
-  [key: string]: ISingleShift[];
-}
-const MyShifts = ({ refreshAPIResults }: IMyShiftsProps) => {
-  const { shifts: shiftsData } = useContext(ShiftsContext);
-  const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({});
-  const [loading, setLoading] = useState("");
-  useEffect(() => {
-    // this gives an object with dates as keys
-    const groupShiftsByDate = shiftsData
-      .filter((sft) => sft.booked)
-      .reduce((dateGroups, shift) => {
-        const date = checkIfDateIsTodayOrTomorrow(convertMillisecondsToMonthNameAndDay(shift.startTime));
-        if (!dateGroups[date]) {
-          dateGroups[date] = [];
-        }
-        dateGroups[date].push(shift);
-        return dateGroups;
-      }, {} as IShiftGroupsType);
-    setShiftGroups(groupShiftsByDate);
-  }, [shiftsData]);
 
-  const cancelAShift = (id: string) => {
-    setLoading(id);
-    cancelAShiftById(id)
-      .then((response) => {
-        setLoading("");
-        refreshAPIResults();
-        toast.success(response.message);
-      })
-      .catch((error) => {
-        setLoading("");
-        toast.error(error.data.message);
-      });
-  };
+const MyShifts = ({ refreshAPIResults }: IMyShiftsProps) => {
+  const { cancelAShift, loading, shiftGroups } = useMyShifts(refreshAPIResults);
 
   return (
     <div className="shifts-container">
