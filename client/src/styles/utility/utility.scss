@@ -123,6 +123,7 @@
     cursor: pointer;
     background-color: transparent;
     transition: all 0.3s, color 0.1s;
+    min-width: 130px;
 
     &:hover {
         opacity: 0.7;
