@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { cancelAShiftById } from "../../../api/controllers/cancel-shift";
 import { ISingleShift } from "../../../api/controllers/get-all-shifts";
 import "../../../styles/components/myShifts.scss";
 import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToHourAndMinute, convertMillisecondsToMonthNameAndDay, getTotalDurationOfShifts } from "../../../util/utilityFunctions";
@@ -22,8 +23,12 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
     setShiftGroups(groupShiftsByDate)
   }, [shiftsData])
 
-  const cancelTheShift = (shiftId: string) => {
-    console.log(shiftId);
+  const cancelAShift = (id: string) => {
+    cancelAShiftById(id).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    })
   }
   
   return (
@@ -44,7 +49,7 @@ const MyShifts = ({ shiftsData }: IMyShiftsProps) => {
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                   <p className="city">{shift.area}</p>
                 </div>
-                <button className="btn-pink" onClick={() => cancelTheShift(shift.id)}>Cancel</button>
+                <button className="btn-pink" onClick={() => cancelAShift(shift.id)}>Cancel</button>
               </div>
             })
           }
