@@ -15,7 +15,7 @@
     - ~~disable overlapping shifts, show overlapping text.~~
     - ~~disable already started shift and show finished text.~~
     - ~~Booking action shows a spinner.~~
-    - create context for api data.
+    - ~~create context for api data.~~
     - ~~add toaster error messages and success messages.~~
 - **API**
     - ~~Create cancel, book shifts api controllers.~~
@@ -23,7 +23,7 @@
 - **App setup**
     - ~~Add eslint scripts.~~
     - ~~Setup code formatting with prettier and eslint.~~
-    - Setup husky hooks.
+    - ~~Setup husky hooks.~~
     - ~~Setup `.vscode` settings to format code on user actions.~~
 - **Husky hooks**
     - ~~pre-commit: to format code before making a commit.~~
