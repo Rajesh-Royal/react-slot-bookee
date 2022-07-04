@@ -17,6 +17,7 @@ interface IAvailableShiftsProps {
  interface IShiftGroupsType { [key: string]: ISingleShift[] }
 const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProps) => {
   const [shiftGroups, setShiftGroups] = useState<IShiftGroupsType>({})
+  const [bookedShifts, setBookedShifts] = useState<typeof shiftsData>([]);
   const [loading, setLoading] = useState("");
   useEffect(() => {
     // this gives an object with dates as keys
@@ -57,6 +58,19 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
       // console.log(error);
     })
   }
+
+
+  useEffect(() => {
+    if (shiftsData.length > 0) {
+      const bookedShifts = shiftsData
+        .filter(s => s.booked)
+      setBookedShifts(bookedShifts);
+    }
+  }, [shiftsData])
+
+  const checkIfAnShiftIsOverLapping = (shift: ISingleShift) => {
+    return !!bookedShifts.find(s => s.startTime < shift.endTime && s.endTime > shift.startTime);
+   }
   return (
     <div className="shifts-container">
       {Object.keys(shiftGroups).map((shift) => {
@@ -69,8 +83,15 @@ const AvailableShifts = ({ shiftsData, refreshAPIResults }: IAvailableShiftsProp
                 <div className="shift-timing">
                   <p className="time">{convertMillisecondsToHourAndMinute(shift.startTime)}-{convertMillisecondsToHourAndMinute(shift.endTime)}</p>
                 </div>
-                <div className={`booking-status ${shift.booked ? "booked" : ""}`}>{shift.booked ? "Booked" : ""}</div>
+                <div className={`booking-status
+                  ${shift.booked ? "booked" : ""}
+                  ${!shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}`}
+                >
+                  {shift.booked ? "Booked" : ""}
+                  {!shift.booked && checkIfAnShiftIsOverLapping(shift) ? "overlapping" : ""}
+                </div>
                 <button className={`${shift.booked ? "btn-pink" : "btn-green"}`}
+                  disabled={checkIfAnShiftIsOverLapping(shift)}
                   onClick={() => {
                     !shift.booked ? bookAShift(shift.id) : cancelAShift(shift.id);
                   }}
