@@ -5,7 +5,9 @@
   "author": "StudioYou",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon ./api/server.js --exec babel-node"
+    "start": "nodemon ./api/server.js --exec babel-node",
+    "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "prettier ./src/**/*.{js,jsx,ts,tsx} --write && eslint ./src/**/*.{js,jsx,ts,tsx} --fix"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
