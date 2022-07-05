@@ -60,53 +60,52 @@ This project usages NPM package manager and in the project directory, you can ru
 A quick look at the top-level files and directories you'll see in this project.
 
 <details>
-  <summary>Client</summary>
-
-    ├── .vscode
+  <summary>Root</summary>
+├── .vscode
+├── .husky
+├── node_modules
+├── Client
     ├── node_modules
     ├── public
     ├── src
+        ├── api
         ├── assets
         ├── components
-        ├── container
-        ├── context
-        ├── pages
-        ├── routes
+        ├── config
+        ├── constants
+        ├── store
+        ├── styles
         ├── utils
-    ├──_redirects
-    ├── netlify.toml
+        ├── index.tsx
+        ├── app.tsx
     ├── .eslintrc.json
     ├── .gitignore
-    ├── .prettierrc
+    ├── .env
+    ├── .huskyrc
     ├── craco.config.js
     ├── package.json
+    ├── tsconfig.json
+    ├── tsconfig.paths.json
     ├── README.md
-    ├── tailwind.config.js
-    └── yarn.lock
-</details>
-<details>
-  <summary>server</summary>
-
-    ├── .vscode
+    └── package.lock.json
+├── Server   
     ├── node_modules
-    ├── dist
-    ├── src
-        ├── app
-          ├── employee
-          ├── salary
-          ├── shared
-          ├── app.module.ts
-        ├── main.ts
-    ├── nest-cli.json
-    ├── .eslintrc.json
+    ├── api
+        ├── shifts-mock-api
+        ├── index.js
+        ├── README.md
+        ├── server.js
     ├── .gitignore
-    ├── .prettierrc
     ├── package.json
     ├── README.md
-    ├── schema.gql
-    ├── tsconfig.build.json
-    ├── tsconfig.json
-    └── yarn.lock
+    └── package.lock.json
+├── .gitignore
+├── CHANGELOG.md
+├── package-lock.json
+├── package.json
+├── Readme.md
+├── shifts_booking_preview.png
+├── todo.md
 </details>
 
 > `.vscode/`: This directory contains all of the workspace setting for vscode.

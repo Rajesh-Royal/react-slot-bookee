@@ -2,7 +2,7 @@
   "name": "react-slot-bookee",
   "version": "1.1.0",
   "description": "react assignment to book shifts",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "start:client": "cd client && npm run start",
     "start:server": "cd server && npm run start",
