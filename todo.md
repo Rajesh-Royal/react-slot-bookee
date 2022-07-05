@@ -30,7 +30,7 @@
 - **Husky hooks**
     - ~~pre-commit: to format code before making a commit.~~
     - ~~post-merge: npm i if something changes in `package.lock.json`~~ 
-    - execute pre-commit hook, currently its not working for client folder. [move to root for .git]
+    - ~~execute pre-commit hook, currently its not working for client folder. [move to root for .git]~~
 - **other**
     - ~~refector codebase to remove unnecessary states, seperate UI and business logic.~~
     - Optimize app.
