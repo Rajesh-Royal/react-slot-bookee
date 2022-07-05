@@ -41,14 +41,16 @@ const useAvailableShifts = (refreshAPIResults: () => void) => {
       return cityGroups;
     }, {} as IShiftGroupsType);
     setShiftGroupsByCity(groupShiftsByCity);
-    // set default shifts city
-    if (currentArea === "") {
-      setCurrentArea(Object.keys(groupShiftsByCity)[0]);
-    } else {
-      filterShiftsByCity(currentArea);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shiftsData]);
+
+  useEffect(() => {
+    if (Object.keys(shiftGroupsByCity).length > 0) {
+      // set default shifts city
+      currentArea === "" ? setCurrentArea(Object.keys(shiftGroupsByCity)?.[0]) : filterShiftsByCity(currentArea);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shiftGroupsByCity]);
 
   const bookAShift = (id: string) => {
     setLoading(id);
