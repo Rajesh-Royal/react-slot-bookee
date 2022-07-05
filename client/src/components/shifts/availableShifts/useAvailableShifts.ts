@@ -5,7 +5,7 @@ import { checkIfDateIsTodayOrTomorrow, convertMillisecondsToMonthNameAndDay } fr
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-interface IShiftGroupsType {
+export interface IShiftGroupsType {
   [key: string]: ISingleShift[];
 }
 

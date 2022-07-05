@@ -3,6 +3,7 @@ import { convertMillisecondsToHourAndMinute } from "@/util/utilityFunctions";
 
 import GreenSpinner from "../../../assets/spinner_green.svg";
 import RedSpinner from "../../../assets/spinner_red.svg";
+import ShiftCityFilter from "../shiftCityFilter";
 import useAvailableShifts from "./useAvailableShifts";
 
 const greenSpinnerImage = <img src={GreenSpinner} alt="green spinner" className="loader" />;
@@ -18,20 +19,7 @@ const AvailableShifts = ({ refreshAPIResults }: IAvailableShiftsProps) => {
 
   return (
     <div className="shifts-container">
-      <div className="city-filter">
-        {Object.keys(shiftGroupsByCity).map((area, index) => {
-          return (
-            <button
-              key={area}
-              className={`${currentArea === area ? "active" : ""}`}
-              onClick={() => {
-                setCurrentArea(area);
-              }}>
-              {area} ({shiftGroupsByCity[area].length})
-            </button>
-          );
-        })}
-      </div>
+      <ShiftCityFilter shiftGroupsByCity={shiftGroupsByCity} currentArea={currentArea} setCurrentArea={setCurrentArea} />
       {Object.keys(currentShifts).map((shift) => {
         return (
           <div className="shifts-group-container" key={shift}>
