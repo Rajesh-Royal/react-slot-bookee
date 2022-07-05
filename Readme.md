@@ -20,7 +20,7 @@ This project Is bootstrapped with [Create React App](https://github.com/facebook
 &nbsp;
 ## <p>Available Scripts :helicopter:</p>
 
-This project usages Yarn as package manager and in the project directory, you can run:
+This project usages NPM package manager and in the project directory, you can run:
 
 ### Root scripts
 
