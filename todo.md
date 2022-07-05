@@ -36,7 +36,7 @@
     - Optimize app.
     - ~~add typescript aliasas to make imports cleaner.~~
 - **Bugfix**
-    - fix: render the correct output after bookin a shift [currently it always shows overlapping]
+    - ~~fix: render the correct output after bookin a shift [currently it always shows overlapping]~~
 
 
 Queries: 
